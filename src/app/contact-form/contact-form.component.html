@@ -1,0 +1,29 @@
+<form class="card" (submit)="createContact($event)">
+    <div class="card-body">
+        <div class="form-group">
+            <label for="id">ID</label>
+            <input [(ngModel)]="contact.id" type="text" name="id" class="form-control" id="id" aria-describedby="idHelp" placeholder="Enter ID">
+            <small id="idHelp" class="form-text text-muted">Enter your contact’s ID</small>
+        </div>
+        <div class="form-group">
+            <label for="name">Contact Name</label>
+            <input [(ngModel)]="contact.name" type="text" name="name" class="form-control" id="name" aria-describedby="nameHelp" placeholder="Enter your name">
+            <small id="nameHelp" class="form-text text-muted">Enter your contact’s name</small>
+        </div>
+        <div class="form-group">
+            <label for="email">Contact Email</label>
+            <input [(ngModel)]="contact.email" type="text" name="email" class="form-control" id="email" aria-describedby="emailHelp"
+            placeholder="Enter your email">
+            <small id="nameHelp" class="form-text text-muted">Enter your contact’s email</small>
+        </div>
+        <div class="form-group">
+            <label for="description">Contact Description</label>
+            <textarea [(ngModel)]="contact.description" name="description" class="form-control" id="description" aria-describedby="descHelp">
+                    </textarea>
+            <small id="descHelp" class="form-text text-muted">Enter your contact’s description</small>
+
+        </div>
+        <button type="submit" class="btn btn-primary">Create contact</button>
+    </div>
+
+</form>

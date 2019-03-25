@@ -1,0 +1,42 @@
+<h4 class="font-weight-normal mb-3">
+    <a class="navbar-brand mr-0" routerLink="/home">
+        <i class="fas fa-wallet"></i>
+        Budget
+    </a>
+<small class="divider mx-2 text-muted">/</small>Overview</h4>
+
+<div class="mb-4">
+    <div class="input-group mb-2">
+        <input type="telephone" class="form-control" placeholder="Amount" autofocus>
+        <select class="custom-select">
+            <option disabled>Category</option>
+            <option 
+                *ngFor="let category of categoryList"
+                value="{{category.key}}">{{category.label}}</option>
+        </select>
+    </div>
+    <div class="input-group mb-2">
+        <textarea class="form-control" placeholder="Note"></textarea>
+    </div>
+    <button class="btn btn-warning btn-block mb-2">
+        <i class="fas fa-shopping-bag mr-1"></i>
+        Add Expense
+    </button>
+    <button class="btn btn-light btn-block mb-2 text-success">
+        <i class="fas fa-piggy-bank mr-1"></i>
+        Add Income
+    </button>
+</div>
+
+<h4 class="d-flex justify-content-between text-dark">
+    <small class="text-muted">Balance:</small>
+    {{balance}}
+</h4>
+<h6 class="d-flex justify-content-between text-dark font-weight-normal">
+    <span class="text-muted">Income:</span>
+    {{incomeTotal}}
+</h6>
+<h6 class="d-flex justify-content-between text-dark font-weight-normal mb-4">
+    <span class="text-muted">Expenses:</span>
+    {{expenseTotal}}
+</h6>

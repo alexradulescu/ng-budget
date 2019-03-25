@@ -1,0 +1,16 @@
+<h4 class="font-weight-normal mb-3">
+        <a class="navbar-brand mr-0" routerLink="/home">
+            <i class="fas fa-wallet"></i>
+            Budget
+        </a>
+        <small class="divider mx-2 text-muted">/</small>Expenses</h4>
+<ul class="list-group">
+    <button type="button" class="list-group-item list-group-item-action"
+        *ngFor="let expense of expenseList">
+        <div class="d-flex justify-content-between align-items-start">
+            <strong class="text-dark">{{expense.amount}}</strong>
+            <span class="badge badge-pill badge-info">{{getCategoryLabel(expense.category)}}</span>
+        </div>
+        <p class="mb-0 text-muted">{{expense.notes}}</p>
+    </button>
+</ul>

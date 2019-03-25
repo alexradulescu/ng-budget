@@ -1,0 +1,22 @@
+<ul class="list-group">
+    <li class="list-group-item list-group-item-action"
+        *ngFor="let category of categoryBalanceList">
+        <div class="d-flex justify-content-between mb-2">
+            <strong>{{category.label}}</strong>
+            {{category.amount}} / {{category.target}}
+        </div>
+        <div class="progress">
+            <div class="progress-bar" role="progressbar" 
+                *ngIf="category.target > 0"
+                [ngClass]="{
+                    'bg-success': category.amount/category.target <= .33,
+                    'bg-warning': category.amount/category.target > .33 && category.amount/category.target <= .66,
+                    'bg-danger': category.amount/category.target > .66
+                }"
+                [style.width]="category.percentage"></div>
+            <div class="progress-bar bg-secondary" role="progressbar" 
+                *ngIf="!category.target > 0"
+                style="width: 100%"></div>
+        </div>
+    </li>
+</ul>

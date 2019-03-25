@@ -1,0 +1,83 @@
+
+
+<div class="card bg-white">
+    <div class="card-body">
+        <input type="search" class="form-control mb-3" placeholder="Search Contacts"
+            #searchBox
+            (input)="searchContact(searchBox.value)">
+
+        <div class="alert alert-info" role="alert"
+            *ngIf="!contactList?.length">
+            <i class="fas fa-exclamation-circle mr-1"></i> There are no contacts matching <strong>{{searchBox.value}}</strong>
+        </div>
+        <div class="table-responsive border rounded"
+            *ngIf="contactList?.length">
+            <table class="table table-hover mb-0">
+                <thead class="bg-light">
+                    <tr>
+                        <th class="text-muted font-weight-normal border-top-0 border-right">#</th>
+                        <th class="text-muted font-weight-normal border-top-0 border-right">Name</th>
+                        <th class="text-muted font-weight-normal border-top-0 border-right">Email</th>
+                        <th class="text-muted font-weight-normal border-top-0 text-right">Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let contact of contactList"
+                        (dblclick)="selectContact(contact)">
+            
+                        <td class="text-muted">{{ contact.id }}</td>
+                        <td>{{ contact.name }}</td>
+                        <td><a href="#">{{ contact.email }}</a></td>
+                        <td class="text-right">
+                            <button class="btn btn-primary btn-sm" (click)="selectContact(contact)">
+                                <i class="far fa-eye mr-1"></i>
+                                Show details
+                            </button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+
+<div class="modal fade show" tabindex="-1" role="dialog" aria-modal="true" style="padding-right: 15px; display: block;" 
+    *ngIf="selectedContact">
+    <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header bg-light align-items-center">
+                <h5 class="modal-title" id="exampleModalLiveLabel">
+                    <i class="far fa-user mr-1"></i>
+                    {{selectedContact.name}}
+                </h5>
+                <button type="button" class="close"
+                    (click)="closeModal()">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <dl class="row">
+                    <dt class="col-sm-3 text-muted">ID</dt>
+                    <dd class="col-sm-9">{{selectedContact.id}}</dd>
+                    
+                    <dt class="col-sm-3 text-muted">Email</dt>
+                    <dd class="col-sm-9"><a href="#">{{selectedContact.email}}</a></dd>
+
+                    <dt class="col-sm-3 text-muted">Description</dt>
+                    <dd class="col-sm-9">{{selectedContact.description}}</dd>
+                    
+                </dl>
+            </div>
+            <div class="modal-footer bg-light">
+                <button type="button" class="btn btn-light text-primary"
+                    (click)="closeModal()">
+                    <i class="fas fa-times mr-1"></i>
+                    Close
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal-backdrop fade show"
+    *ngIf="selectedContact"></div>

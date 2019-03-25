@@ -1,0 +1,13 @@
+<h4 class="font-weight-normal mb-3">
+        <a class="navbar-brand mr-0" routerLink="/home">
+            <i class="fas fa-wallet"></i>
+            Budget
+        </a>
+        <small class="divider mx-2 text-muted">/</small>Income</h4>
+<ul class="list-group">
+    <button type="button" class="list-group-item list-group-item-action"
+        *ngFor="let income of incomeList">
+        <strong class="text-dark">{{income.amount}}</strong>
+        <p class="mb-0 text-muted">{{income.notes}}</p>
+    </button>
+</ul>

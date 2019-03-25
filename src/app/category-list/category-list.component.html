@@ -1,0 +1,68 @@
+<h4 class="font-weight-normal mb-3">
+    <a class="navbar-brand mr-0" routerLink="/home">
+        <i class="fas fa-wallet"></i>
+        Budget
+    </a>
+    <small class="divider mx-2 text-muted">/</small>Settings
+</h4>
+
+<ul class="list-group">
+    <button type="button" class="list-group-item list-group-item-action list-group-item-success text-center"
+        (click)="openCategoryModal()">
+        <i class="fas fa-plus mr-1"></i>Add Category
+    </button>
+    <button type="button" class="list-group-item list-group-item-action"
+        *ngFor="let category of categoryList">
+        <strong>{{category.label}}</strong>
+    </button>
+</ul>
+
+<div class="modal fade show" tabindex="-1" role="dialog" aria-modal="true" style="display: block;" 
+    *ngIf="showCategoryModal">
+    <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header bg-light align-items-center">
+                <h5 class="modal-title" id="exampleModalLiveLabel">
+                    <i class="far fa-user mr-1"></i>
+                    Create Category
+                </h5>
+                <button type="button" class="close"
+                    (click)="closeModal()">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <label class="form-group d-block">
+                    <span>Category Name</span>
+                    <input type="text" class="form-control" placeholder="ex: Food / Utilities / Rent ..."
+                        [(ngModel)]="category.label">
+                </label>
+                <label class="form-group d-block">
+                    <span>Target</span>
+                    <input type="telephone" class="form-control" placeholder="ex: 500"
+                        [(ngModel)]="category.target">
+                </label>
+                <label class="form-group d-block form-check">
+                    <input type="checkbox" class="form-check-input"
+                        [(ngModel)]="category.showOnDashboard">
+                    <span class="form-check-label" for="exampleCheck1">Show on Dashboard?</span>
+                </label>
+            </div>
+            <div class="modal-footer bg-light">
+                <button type="button" class="btn btn-light text-danger"
+                    (click)="closeModal()">
+                    <i class="fas fa-times mr-1"></i>
+                    Cancel
+                </button>
+
+                <button type="button" class="btn btn-success"
+                    (click)="createCategory()">
+                    <i class="far fa-save mr-1"></i>
+                    Save
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal-backdrop fade show"
+    *ngIf="showCategoryModal"></div>
